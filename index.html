@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Net Worth Dashboard</title>
-    <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <!-- Link to Chart.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Link to the CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -51,30 +47,27 @@
                     </div>
                     <div class="input-group">
                         <label for="investment-rate">Investment Growth Rate (%):</label>
-                        <input type="range" id="investment-rate" min="0" max="0.1" step="0.001" value="0.07" 
-                            oninput="document.getElementById('investment-rate-value').textContent = (parseFloat(this.value) * 100).toFixed(2) + '%'; calculateNetWorth(); drawCharts();">
-                        <span id="investment-rate-value">7%</span>
+                        <input type="range" id="investment-rate" min="0" max="15" value="7" step="0.1" />
                     </div>
                     <div class="input-group">
                         <label for="property-rate">Property Growth Rate (%):</label>
-                        <input type="range" id="property-rate" min="0" max="0.1" step="0.001" value="0.04" 
-                            oninput="document.getElementById('property-rate-value').textContent = (parseFloat(this.value) * 100).toFixed(2) + '%'; calculateNetWorth(); drawCharts();">
-                        <span id="property-rate-value">4%</span>
+                        <input type="range" id="property-rate" min="0" max="10" value="4" step="0.1" />
                     </div>
                     <button class="button" type="button" onclick="calculateNetWorth()">Calculate Net Worth</button>
                 </form>
             </section>
             <section id="results" class="card">
                 <h2>Results</h2>
-                <div><!-- The results will be displayed here --></div>
-            </section>
-            <section id="charts" class="card">
-                <h2>Growth Over Time</h2>
-                <canvas id="investmentChart"></canvas>
-                <canvas id="propertyChart"></canvas>
+                <div class="chart-container" id="investmentChartContainer">
+                    <canvas id="investmentChart"></canvas>
+                </div>
+                <div class="chart-container" id="propertyChartContainer">
+                    <canvas id="propertyChart"></canvas>
+                </div>
             </section>
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

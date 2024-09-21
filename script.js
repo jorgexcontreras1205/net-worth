@@ -2,9 +2,9 @@
 const house1Debt = 135000;  // 2003 Plum Grove
 const house2Debt = 161000;  // 2005 Plum Grove
 const house3Debt = 163500;  // 5205 Wilmington
-const house1PrincipalReduction = 400;  // Monthly payment towards principal for 2003 Plum Grove
-const house2PrincipalReduction = 420;  // Monthly payment towards principal for 2005 Plum Grove
-const house3PrincipalReduction = 250;  // Monthly payment towards principal for 5205 Wilmington
+const house1PrincipalReduction = 460;  // Monthly payment towards principal for 2003 Plum Grove
+const house2PrincipalReduction = 530;  // Monthly payment towards principal for 2005 Plum Grove
+const house3PrincipalReduction = 500;  // Monthly payment towards principal for 5205 Wilmington
 const weeklyInvestmentContribution = 100 * 52;  // $100 per week, converted to annual contributions
 
 // Function to format numbers as currency (e.g., $1,000.00)

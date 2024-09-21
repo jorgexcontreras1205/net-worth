@@ -93,8 +93,8 @@ function calculateNetWorth() {
             <li>Principal payments for each property are fixed at the following monthly amounts:
                 <ul>
                     <li>2003 Plum Grove: <strong>$320</strong></li>
-                    <li>2005 Plum Grove: <strong>$360</strong></li>
-                    <li>5205 Wilmington: <strong>$140</strong></li>
+                    <li>2005 Plum Grove: <strong>$326</strong></li>
+                    <li>5205 Wilmington: <strong>$250</strong></li>
                 </ul>
             </li>
         </ul>

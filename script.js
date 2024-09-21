@@ -74,5 +74,19 @@ function calculateNetWorth() {
         <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
 
         <h3>Total Future Net Worth: ${formatCurrency(futureNetWorth)}</h3>
+
+        <h3>Assumptions:</h3>
+        <ul>
+            <li>The housing market is expected to grow at an annual rate of <strong>4%</strong>.</li>
+            <li>The stock market is expected to grow at an annual rate of <strong>7%</strong>.</li>
+            <li>You are contributing <strong>$100 per week</strong> to your investment account.</li>
+            <li>Principal payments for each house are fixed at the following monthly amounts:
+                <ul>
+                    <li>2003 Plum Grove: <strong>$320</strong></li>
+                    <li>2005 Plum Grove: <strong>$360</strong></li>
+                    <li>5205 Wilmington: <strong>$140</strong></li>
+                </ul>
+            </li>
+        </ul>
     `;
 }

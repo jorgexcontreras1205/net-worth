@@ -1,115 +1,137 @@
-// Fixed house debts and specific monthly principal reductions
+// Constants for fixed debts and monthly principal reductions
 const house1Debt = 135000;  // 2003 Plum Grove
 const house2Debt = 161000;  // 2005 Plum Grove
 const house3Debt = 163500;  // 5205 Wilmington
-const house1PrincipalReduction = 320;  // Monthly payment towards principal
-const house2PrincipalReduction = 326;  // Monthly payment towards principal
-const house3PrincipalReduction = 250;  // Monthly payment towards principal
-const weeklyInvestmentContribution = 100 * 52;  // $100 per week, annualized
+const house1PrincipalReduction = 320;
+const house2PrincipalReduction = 326;
+const house3PrincipalReduction = 250;
+const weeklyInvestmentContribution = 100 * 52;  // Annualized
 
-// Initialize global chart variables
-let investmentChart, propertyChart;
-
-// Function to format numbers as currency
+// Helper function to format numbers as currency
 function formatCurrency(value) {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
 }
 
-// Main function to calculate net worth and update the dashboard
+// Function to calculate and display the net worth
 function calculateNetWorth() {
     const house1Value = parseFloat(document.getElementById("house1-value").value);
     const house2Value = parseFloat(document.getElementById("house2-value").value);
     const house3Value = parseFloat(document.getElementById("house3-value").value);
     const investmentValue = parseFloat(document.getElementById("investment-value").value);
     const years = parseInt(document.getElementById("years").value);
-    const houseGrowthRate = parseFloat(document.getElementById("property-rate").value);
-    const investmentGrowthRate = parseFloat(document.getElementById("investment-rate").value);
+    const houseGrowthRate = parseFloat(document.getElementById("property-rate").value) / 100;
+    const investmentGrowthRate = parseFloat(document.getElementById("investment-rate").value) / 100;
 
-    const futureValues = calculateFutureValues(house1Value, house2Value, house3Value, investmentValue, years, houseGrowthRate, investmentGrowthRate);
-    displayResults(futureValues);
-    updateCharts(futureValues, years, houseGrowthRate, investmentGrowthRate);
-}
+    const house1FutureValue = house1Value * Math.pow(1 + houseGrowthRate, years);
+    const house2FutureValue = house2Value * Math.pow(1 + houseGrowthRate, years);
+    const house3FutureValue = house3Value * Math.pow(1 + houseGrowthRate, years);
 
-// Function to calculate future values of properties and investments
-function calculateFutureValues(h1v, h2v, h3v, iv, years, hgr, igr) {
-    const results = {
-        houses: [],
-        investment: 0
-    };
-    const houseValues = [h1v, h2v, h3v];
-    const debts = [house1Debt, house2Debt, house3Debt];
-    const reductions = [house1PrincipalReduction, house2PrincipalReduction, house3PrincipalReduction];
+    const house1RemainingDebt = Math.max(0, house1Debt - (house1PrincipalReduction * 12 * years));
+    const house2RemainingDebt = Math.max(0, house2Debt - (house2PrincipalReduction * 12 * years));
+    const house3RemainingDebt = Math.max(0, house3Debt - (house3PrincipalReduction * 12 * years));
 
-    houseValues.forEach((value, index) => {
-        const futureValue = value * Math.pow(1 + hgr, years);
-        const remainingDebt = Math.max(0, debts[index] - (reductions[index] * 12 * years));
-        const netValue = futureValue - remainingDebt;
-        results.houses.push({futureValue, remainingDebt, netValue});
-    });
+    const house1NetValue = house1FutureValue - house1RemainingDebt;
+    const house2NetValue = house2FutureValue - house2RemainingDebt;
+    const house3NetValue = house3FutureValue - house3RemainingDebt;
 
-    const investmentFutureValue = iv * Math.pow(1 + igr, years) + weeklyInvestmentContribution * ((Math.pow(1 + igr, years) - 1) / igr);
-    results.investment = investmentFutureValue;
+    const investmentFutureValue = investmentValue * Math.pow(1 + investmentGrowthRate, years) + 
+                                  weeklyInvestmentContribution * ((Math.pow(1 + investmentGrowthRate, years) - 1) / investmentGrowthRate);
 
-    return results;
-}
+    const futureNetWorth = house1NetValue + house2NetValue + house3NetValue + investmentFutureValue;
 
-// Function to display the results on the page
-function displayResults({houses, investment}) {
-    const resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = houses.map((house, index) => `
+    // Display results
+    document.getElementById("results").innerHTML = `
         <div class="results-box">
-            <h3>Property ${index + 1}</h3>
-            <p>Future Value: ${formatCurrency(house.futureValue)}</p>
-            <p>Remaining Debt: ${formatCurrency(house.remainingDebt)}</p>
-            <p>Net Value: ${formatCurrency(house.netValue)}</p>
+            <h3>Property 1 (2003 Plum Grove)</h3>
+            <p>Future Value: ${formatCurrency(house1FutureValue)}</p>
+            <p>Remaining Debt: ${formatCurrency(house1RemainingDebt)}</p>
+            <p>Net Value: ${formatCurrency(house1NetValue)}</p>
         </div>
-    `).join('') + `
+        <div class="results-box">
+            <h3>Property 2 (2005 Plum Grove)</h3>
+            <p>Future Value: ${formatCurrency(house2FutureValue)}</p>
+            <p>Remaining Debt: ${formatCurrency(house2RemainingDebt)}</p>
+            <p>Net Value: ${formatCurrency(house2NetValue)}</p>
+        </div>
+        <div class="results-box">
+            <h3>Property 3 (5205 Wilmington)</h3>
+            <p>Future Value: ${formatCurrency(house3FutureValue)}</p>
+            <p>Remaining Debt: ${formatCurrency(house3RemainingDebt)}</p>
+            <p>Net Value: ${formatCurrency(house3NetValue)}</p>
+        </div>
         <div class="results-box">
             <h3>Investment Account</h3>
-            <p>Future Value: ${formatCurrency(investment)}</p>
+            <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
+        </div>
+        <div class="net-worth-box">
+            Total Future Net Worth: ${formatCurrency(futureNetWorth)}
         </div>
     `;
+
+    drawCharts();  // Update the charts with new values
 }
 
-// Function to update the charts
-function updateCharts({houses, investment}, years, hgr, igr) {
-    const investmentData = Array.from({length: years}, (_, i) => investment * Math.pow(1 + igr, i+1));
-    const propertyData = houses.map(house => Array.from({length: years}, (_, i) => house.futureValue * Math.pow(1 + hgr, i+1)));
-
-    drawCharts(investmentData, propertyData);
-}
-
-// Function to draw charts using Chart.js
-function drawCharts(investmentData, propertyData) {
+// Function to initialize and update the charts
+function drawCharts() {
     const ctxInvestment = document.getElementById('investmentChart').getContext('2d');
-    if (investmentChart) investmentChart.destroy();
-    investmentChart = new Chart(ctxInvestment, {
+    const investmentData = Array.from({ length: parseInt(document.getElementById('years').value) + 1 }, (_, i) =>
+        parseFloat(document.getElementById('investment-value').value) * Math.pow(1 + parseFloat(document.getElementById('investment-rate').value) / 100, i)).toFixed(2);
+
+    const investmentChart = new Chart(ctxInvestment, {
         type: 'line',
         data: {
-            labels: Array.from({length: investmentData.length}, (_, i) => i + 1),
+            labels: investmentData.map((_, index) => index),
             datasets: [{
                 label: 'Investment Growth',
                 data: investmentData,
                 borderColor: 'rgb(75, 192, 192)',
                 fill: false
             }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
 
     const ctxProperty = document.getElementById('propertyChart').getContext('2d');
-    if (propertyChart) propertyChart.destroy();
-    propertyChart = new Chart(ctxProperty, {
+    const propertyChart = new Chart(ctxProperty, {
         type: 'line',
         data: {
-            labels: Array.from({length: propertyData[0].length}, (_, i) => i + 1),
-            datasets: propertyData.map((data, index) => ({
-                label: `Property ${index + 1} Growth`,
-                data: data,
-                borderColor: `rgba(${255 - index*85}, ${99 + index*85}, 132)`,
+            labels: Array.from({ length: parseInt(document.getElementById('years').value) + 1 }, (_, i) => i),
+            datasets: [{
+                label: 'Property 1 Growth',
+                data: Array.from({ length: parseInt(document.getElementById('years').value) + 1 }, (_, i) =>
+                    (parseFloat(document.getElementById('house1-value').value) * Math.pow(1 + parseFloat(document.getElementById('property-rate').value) / 100, i)).toFixed(2)),
+                borderColor: 'rgba(255, 99, 132)',
                 fill: false
-            }))
+            }, {
+                label: 'Property 2 Growth',
+                data: Array.from({ length: parseInt(document.getElementById('years').value) + 1 }, (_, i) =>
+                    (parseFloat(document.getElementById('house2-value').value) * Math.pow(1 + parseFloat(document.getElementById('property-rate').value) / 100, i)).toFixed(2)),
+                borderColor: 'rgba(54, 162, 235)',
+                fill: false
+            }, {
+                label: 'Property 3 Growth',
+                data: Array.from({ length: parseInt(document.getElementById('years').value) + 1 }, (_, i) =>
+                    (parseFloat(document.getElementById('house3-value').value) * Math.pow(1 + parseFloat(document.getElementById('property-rate').value) / 100, i)).toFixed(2)),
+                borderColor: 'rgba(75, 192, 192)',
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
 }
 
-document.addEventListener('DOMContentLoaded', calculateNetWorth);
+// Attach event listeners to inputs for live updates
+document.getElementById('investment-rate').addEventListener('input', calculateNetWorth);
+document.getElementById('property-rate').addEventListener('input', calculateNetWorth);

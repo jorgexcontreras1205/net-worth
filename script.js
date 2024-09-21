@@ -51,14 +51,28 @@ function calculateNetWorth() {
     // Total future net worth summation with proper rounding to avoid floating-point errors
     const futureNetWorth = house1NetValue + house2NetValue + house3NetValue + investmentFutureValue;
 
-    // Displaying results with proper formatting
+    // Displaying results with additional debt information
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `
         <h3>Future Net Worth in ${years} Years</h3>
-        <p>House 1 Future Value: ${formatCurrency(house1FutureValue)} (Remaining Debt: ${formatCurrency(house1FinalDebt)}) - Net Value: ${formatCurrency(house1NetValue)}</p>
-        <p>House 2 Future Value: ${formatCurrency(house2FutureValue)} (Remaining Debt: ${formatCurrency(house2FinalDebt)}) - Net Value: ${formatCurrency(house2NetValue)}</p>
-        <p>House 3 Future Value: ${formatCurrency(house3FutureValue)} (Remaining Debt: ${formatCurrency(house3FinalDebt)}) - Net Value: ${formatCurrency(house3NetValue)}</p>
-        <p>Investment Account Future Value: ${formatCurrency(investmentFutureValue)}</p>
+        <p><strong>House 1 (2003 Plum Grove):</strong></p>
+        <p>Future Value: ${formatCurrency(house1FutureValue)}</p>
+        <p>Remaining Debt: ${formatCurrency(house1FinalDebt)}</p>
+        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house1NetValue)}</p>
+
+        <p><strong>House 2 (2005 Plum Grove):</strong></p>
+        <p>Future Value: ${formatCurrency(house2FutureValue)}</p>
+        <p>Remaining Debt: ${formatCurrency(house2FinalDebt)}</p>
+        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house2NetValue)}</p>
+
+        <p><strong>House 3 (5205 Wilmington):</strong></p>
+        <p>Future Value: ${formatCurrency(house3FutureValue)}</p>
+        <p>Remaining Debt: ${formatCurrency(house3FinalDebt)}</p>
+        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house3NetValue)}</p>
+
+        <p><strong>Investment Account:</strong></p>
+        <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
+
         <h3>Total Future Net Worth: ${formatCurrency(futureNetWorth)}</h3>
     `;
 }

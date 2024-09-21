@@ -2,9 +2,9 @@
 const house1Debt = 135000;  // 2003 Plum Grove
 const house2Debt = 161000;  // 2005 Plum Grove
 const house3Debt = 163500;  // 5205 Wilmington
-const house1PrincipalReduction = 440;  // Monthly payment towards principal for 2003 Plum Grove is currently 320, 440 is the number I use as an average principal for the next 27 years
-const house2PrincipalReduction = 510;  // Monthly payment towards principal for 2005 Plum Grove is currently 326, 510 is the number I use as an average principal for the next 27 years
-const house3PrincipalReduction = 520;  // Monthly payment towards principal for 5205 Wilmington is currently 140, 520 is the number I use as an average principal for the next 29 years
+const house1PrincipalReduction = 400;  // Monthly payment towards principal for 2003 Plum Grove is currently 320, 400 is the number I use as an average principal for the next 27 years
+const house2PrincipalReduction = 470;  // Monthly payment towards principal for 2005 Plum Grove is currently 326, 470 is the number I use as an average principal for the next 27 years
+const house3PrincipalReduction = 450;  // Monthly payment towards principal for 5205 Wilmington is currently 140, 450 is the number I use as an average principal for the next 29 years
 const weeklyInvestmentContribution = 100 * 52;  // $100 per week, converted to annual contributions
 
 // Function to format numbers as currency (e.g., $1,000.00)

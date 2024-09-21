@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    width: 50%;
+    width: 60%;
     margin: auto;
     background: white;
     padding: 20px;
@@ -50,9 +50,44 @@ button:hover {
     background-color: #0056b3;
 }
 
-#results {
-    margin-top: 20px;
+.results-box {
     background-color: #e0f7fa;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #007BFF;
+    border-radius: 8px;
+}
+
+.results-box h3 {
+    color: #007BFF;
+    margin-bottom: 15px;
+}
+
+.assumptions {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #FF9800;
+    margin-top: 20px;
+}
+
+.assumptions h3 {
+    color: #FF9800;
+    margin-bottom: 10px;
+}
+
+.assumptions ul {
+    padding-left: 20px;
+}
+
+.assumptions ul li {
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+.assumptions ul li::before {
+    content: '•';
+    color: #FF9800;
+    font-weight: bold;
+    margin-right: 8px;
 }

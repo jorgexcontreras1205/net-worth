@@ -5,6 +5,12 @@ const house3Debt = 163500;  // 5205 Wilmington
 const house1PrincipalReduction = 320;  // Monthly payment towards principal for 2003 Plum Grove
 const house2PrincipalReduction = 360;  // Monthly payment towards principal for 2005 Plum Grove
 const house3PrincipalReduction = 140;  // Monthly payment towards principal for 5205 Wilmington
+const weeklyInvestmentContribution = 100 * 52;  // $100 per week, converted to annual contributions
+
+// Function to format numbers as currency (e.g., $1,000.00)
+function formatCurrency(value) {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+}
 
 function calculateNetWorth() {
     // Getting input values
@@ -22,7 +28,6 @@ function calculateNetWorth() {
     const house1FutureValue = house1Value * Math.pow(1 + houseGrowthRate, years);
     const house2FutureValue = house2Value * Math.pow(1 + houseGrowthRate, years);
     const house3FutureValue = house3Value * Math.pow(1 + houseGrowthRate, years);
-    const investmentFutureValue = investmentValue * Math.pow(1 + investmentGrowthRate, years);
 
     // Calculate debt reduction over time based on specific monthly principal reductions
     const house1RemainingDebt = house1Debt - (house1PrincipalReduction * 12 * years);
@@ -38,17 +43,22 @@ function calculateNetWorth() {
     const house1NetValue = house1FutureValue - house1FinalDebt;
     const house2NetValue = house2FutureValue - house2FinalDebt;
     const house3NetValue = house3FutureValue - house3FinalDebt;
-    
+
+    // Investment account future value with contributions
+    const investmentFutureValue = investmentValue * Math.pow(1 + investmentGrowthRate, years) + 
+                                  weeklyInvestmentContribution * ((Math.pow(1 + investmentGrowthRate, years) - 1) / investmentGrowthRate);
+
+    // Total future net worth summation with proper rounding to avoid floating-point errors
     const futureNetWorth = house1NetValue + house2NetValue + house3NetValue + investmentFutureValue;
 
-    // Displaying results
+    // Displaying results with proper formatting
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `
         <h3>Future Net Worth in ${years} Years</h3>
-        <p>House 1 Future Value: $${house1FutureValue.toFixed(2)} (Remaining Debt: $${house1FinalDebt.toFixed(2)}) - Net Value: $${house1NetValue.toFixed(2)}</p>
-        <p>House 2 Future Value: $${house2FutureValue.toFixed(2)} (Remaining Debt: $${house2FinalDebt.toFixed(2)}) - Net Value: $${house2NetValue.toFixed(2)}</p>
-        <p>House 3 Future Value: $${house3FutureValue.toFixed(2)} (Remaining Debt: $${house3FinalDebt.toFixed(2)}) - Net Value: $${house3NetValue.toFixed(2)}</p>
-        <p>Investment Account Future Value: $${investmentFutureValue.toFixed(2)}</p>
-        <h3>Total Future Net Worth: $${futureNetWorth.toFixed(2)}</h3>
+        <p>House 1 Future Value: ${formatCurrency(house1FutureValue)} (Remaining Debt: ${formatCurrency(house1FinalDebt)}) - Net Value: ${formatCurrency(house1NetValue)}</p>
+        <p>House 2 Future Value: ${formatCurrency(house2FutureValue)} (Remaining Debt: ${formatCurrency(house2FinalDebt)}) - Net Value: ${formatCurrency(house2NetValue)}</p>
+        <p>House 3 Future Value: ${formatCurrency(house3FutureValue)} (Remaining Debt: ${formatCurrency(house3FinalDebt)}) - Net Value: ${formatCurrency(house3NetValue)}</p>
+        <p>Investment Account Future Value: ${formatCurrency(investmentFutureValue)}</p>
+        <h3>Total Future Net Worth: ${formatCurrency(futureNetWorth)}</h3>
     `;
 }

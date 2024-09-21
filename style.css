@@ -1,7 +1,7 @@
 /* Fonts from Google Fonts */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9;
+    background: linear-gradient(to right, #f0f0f5, #f9f9f9);
     margin: 0;
     padding: 0;
     color: #333;
@@ -31,6 +31,7 @@ h1, h2 {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #FF9800; /* Secondary color for labels */
 }
 
 .input-group input {
@@ -41,11 +42,12 @@ h1, h2 {
     margin-bottom: 15px;
     font-size: 16px;
     transition: all 0.3s ease;
+    background-color: #f9f9f9;
 }
 
 .input-group input:hover, .input-group input:focus {
-    border-color: #007BFF;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.1);
+    border-color: #FF9800;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.2); /* Orange glow effect */
 }
 
 button {
@@ -58,11 +60,12 @@ button {
     border-radius: 8px;
     cursor: pointer;
     font-size: 18px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px); /* Slight button pop effect */
 }
 
 /* Results Section */
@@ -81,8 +84,8 @@ button:hover {
 .results-box {
     margin-top: 20px;
     padding: 20px;
-    background-color: #fff;
-    border-left: 4px solid #007BFF;
+    background-color: #f0f4ff; /* Light blue background for result boxes */
+    border-left: 6px solid #007BFF; /* Blue border to highlight results */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -93,4 +96,14 @@ button:hover {
     margin-top: 40px;
     font-size: 14px;
     color: #888;
+}
+
+/* Custom colors for different result types */
+.results-box h3 {
+    color: #FF9800;
+}
+
+.results-box p {
+    font-size: 16px;
+    color: #333;
 }

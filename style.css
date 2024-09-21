@@ -107,3 +107,16 @@ button:hover {
     font-size: 16px;
     color: #333;
 }
+
+/* New style for the Total Future Net Worth box */
+.net-worth-box {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}

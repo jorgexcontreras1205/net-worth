@@ -55,21 +55,21 @@ function calculateNetWorth() {
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `
         <div class="results-box">
-            <h3>House 1 (2003 Plum Grove)</h3>
+            <h3>Property 1 (2003 Plum Grove)</h3>
             <p>Future Value: ${formatCurrency(house1FutureValue)}</p>
             <p>Remaining Debt: ${formatCurrency(house1FinalDebt)}</p>
             <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house1NetValue)}</p>
         </div>
 
         <div class="results-box">
-            <h3>House 2 (2005 Plum Grove)</h3>
+            <h3>Property 2 (2005 Plum Grove)</h3>
             <p>Future Value: ${formatCurrency(house2FutureValue)}</p>
             <p>Remaining Debt: ${formatCurrency(house2FinalDebt)}</p>
             <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house2NetValue)}</p>
         </div>
 
         <div class="results-box">
-            <h3>House 3 (5205 Wilmington)</h3>
+            <h3>Property 3 (5205 Wilmington)</h3>
             <p>Future Value: ${formatCurrency(house3FutureValue)}</p>
             <p>Remaining Debt: ${formatCurrency(house3FinalDebt)}</p>
             <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house3NetValue)}</p>
@@ -80,9 +80,9 @@ function calculateNetWorth() {
             <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
         </div>
 
-        <div class="results-box">
-            <h3>Total Future Net Worth</h3>
-            <p>${formatCurrency(futureNetWorth)}</p>
+        <!-- Noticeable green box for Total Future Net Worth -->
+        <div class="net-worth-box">
+            Total Future Net Worth: ${formatCurrency(futureNetWorth)}
         </div>
 
         <h3>Assumptions:</h3>
@@ -90,7 +90,7 @@ function calculateNetWorth() {
             <li>The housing market is expected to grow at an annual rate of <strong>4%</strong>.</li>
             <li>The stock market is expected to grow at an annual rate of <strong>7%</strong>.</li>
             <li>You are contributing <strong>$100 per week</strong> to your investment account.</li>
-            <li>Principal payments for each house are fixed at the following monthly amounts:
+            <li>Principal payments for each property are fixed at the following monthly amounts:
                 <ul>
                     <li>2003 Plum Grove: <strong>$320</strong></li>
                     <li>2005 Plum Grove: <strong>$360</strong></li>

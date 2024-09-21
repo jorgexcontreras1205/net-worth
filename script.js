@@ -51,42 +51,22 @@ function calculateNetWorth() {
     // Total future net worth summation with proper rounding to avoid floating-point errors
     const futureNetWorth = house1NetValue + house2NetValue + house3NetValue + investmentFutureValue;
 
-    // Displaying results with additional debt information
+    // Displaying results in separate boxes
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `
-        <h3>Future Net Worth in ${years} Years</h3>
-        <p><strong>House 1 (2003 Plum Grove):</strong></p>
-        <p>Future Value: ${formatCurrency(house1FutureValue)}</p>
-        <p>Remaining Debt: ${formatCurrency(house1FinalDebt)}</p>
-        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house1NetValue)}</p>
+        <div class="results-box">
+            <h3>House 1 (2003 Plum Grove)</h3>
+            <p>Future Value: ${formatCurrency(house1FutureValue)}</p>
+            <p>Remaining Debt: ${formatCurrency(house1FinalDebt)}</p>
+            <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house1NetValue)}</p>
+        </div>
 
-        <p><strong>House 2 (2005 Plum Grove):</strong></p>
-        <p>Future Value: ${formatCurrency(house2FutureValue)}</p>
-        <p>Remaining Debt: ${formatCurrency(house2FinalDebt)}</p>
-        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house2NetValue)}</p>
+        <div class="results-box">
+            <h3>House 2 (2005 Plum Grove)</h3>
+            <p>Future Value: ${formatCurrency(house2FutureValue)}</p>
+            <p>Remaining Debt: ${formatCurrency(house2FinalDebt)}</p>
+            <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house2NetValue)}</p>
+        </div>
 
-        <p><strong>House 3 (5205 Wilmington):</strong></p>
-        <p>Future Value: ${formatCurrency(house3FutureValue)}</p>
-        <p>Remaining Debt: ${formatCurrency(house3FinalDebt)}</p>
-        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house3NetValue)}</p>
-
-        <p><strong>Investment Account:</strong></p>
-        <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
-
-        <h3>Total Future Net Worth: ${formatCurrency(futureNetWorth)}</h3>
-
-        <h3>Assumptions:</h3>
-        <ul>
-            <li>The housing market is expected to grow at an annual rate of <strong>4%</strong>.</li>
-            <li>The stock market is expected to grow at an annual rate of <strong>7%</strong>.</li>
-            <li>You are contributing <strong>$100 per week</strong> to your investment account.</li>
-            <li>Principal payments for each house are fixed at the following monthly amounts:
-                <ul>
-                    <li>2003 Plum Grove: <strong>$320</strong></li>
-                    <li>2005 Plum Grove: <strong>$360</strong></li>
-                    <li>5205 Wilmington: <strong>$140</strong></li>
-                </ul>
-            </li>
-        </ul>
-    `;
-}
+        <div class="results-box">
+            <h3>House 3 (5205 Wilmington)</

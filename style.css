@@ -65,25 +65,24 @@ body {
     padding: 20px;
     margin-top: 20px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    color: #333; /* Ensuring text is visible against the light background */
 }
 
 /* Input Styles */
 .input-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #FF9800; /* Maintaining visual emphasis on input labels */
+    display:block;
+    font-weight:bold;
+    margin-bottom:10px;
+    color:#FF9800;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    font-size: 16px;
-    background-color: #f9f9f9;
+.input-group input, .input-group range {
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    margin-bottom:15px;
+    font-size:16px;
+    background-color:#f9f9f9;
 }
 
 .button {
@@ -101,25 +100,33 @@ body {
     transform: scale(1.05);
 }
 
+/* Results Section */
 #results {
-    background-color: #e0e0e0; /* Light grey background for clarity */
-    color: #333; /* Dark text for readability */
+    background-color: #e0e0e0;
+    color: #333;
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px;
     transition: opacity 0.6s ease, transform 0.6s ease;
-    opacity: 1; /* Making sure it's always visible */
+    opacity: 1;
 }
 
 .results-box {
-    background-color: #ffffff; /* White background for maximum contrast */
+    background-color: #ffffff;
     border-left: 6px solid #007BFF;
     border-radius: 10px;
     padding: 20px;
-    color: #333; /* Ensuring readability */
+    color: #333;
 }
 
-/* Green Box for Total Future Net Worth */
+/* Charts */
+.chart-container {
+    width: 50%;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .net-worth-box {
     background-color: #4CAF50;
     color: white;
@@ -130,6 +137,13 @@ body {
     font-weight: bold;
     margin-top: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.summary-section {
+    background-color: #f0f0f5;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 16px;
 }
 
 @media (max-width: 768px) {
@@ -148,48 +162,9 @@ body {
     .dashboard-main {
         padding: 10px;
     }
-}
 
-/* Existing CSS for layout */
-.dashboard-main {
-    grid-area: main;
-    padding: 20px;
-    background: #f9f9f9;
+    .chart-container {
+        width: 100%;
+        height: 200px; /* Smaller charts on smaller screens */
+    }
 }
-
-.results-box {
-    background-color: #ffffff;
-    border-left: 6px solid #007BFF;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-/* New styles for smaller charts */
-.chart-container {
-    width: 50%; /* Smaller width for charts */
-    height: 300px; /* Fixed smaller height for charts */
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.net-worth-box {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 24px;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Ensuring the assumptions and net worth summary are always visible */
-.summary-section {
-    background-color: #f0f0f5;
-    padding: 20px;
-    margin-top: 20px;
-    font-size: 16px;
-}
-

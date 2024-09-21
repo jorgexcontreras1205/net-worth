@@ -1,126 +1,3 @@
-/* Fonts from Google Fonts */
-body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to right, #f0f0f5, #f9f9f9);
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-
-h1, h2 {
-    font-family: 'Montserrat', serif;
-    text-align: center;
-    color: #007BFF;
-}
-
-.container {
-    width: 70%;
-    margin: auto;
-    padding: 30px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #FF9800; /* Secondary color for labels */
-}
-
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    background-color: #f9f9f9;
-}
-
-.input-group input:hover, .input-group input:focus {
-    border-color: #FF9800;
-    box-shadow: 0 0 8px rgba(255, 152, 0, 0.2); /* Orange glow effect */
-}
-
-button {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease, transform 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px); /* Slight button pop effect */
-}
-
-/* Results Section */
-#results {
-    margin-top: 30px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-#results.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.results-box {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f0f4ff; /* Light blue background for result boxes */
-    border-left: 6px solid #007BFF; /* Blue border to highlight results */
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Styling for footer or extra text */
-.footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #888;
-}
-
-/* Custom colors for different result types */
-.results-box h3 {
-    color: #FF9800;
-}
-
-.results-box p {
-    font-size: 16px;
-    color: #333;
-}
-
-/* New style for the Total Future Net Worth box */
-.net-worth-box {
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    font-size: 24px;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
 /* Basic Reset */
 * {
     margin: 0;
@@ -136,29 +13,50 @@ body {
     line-height: 1.6;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 8px;
-    color: #333;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+/* Dashboard Layout */
+.dashboard-container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
 }
 
-.button {
-    background: linear-gradient(to right, #06bcee, #00dffc);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+.dashboard-header {
+    grid-area: header;
+    background-color: #007BFF;
+    color: white;
     padding: 10px 20px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
 }
 
-.button:hover {
-    transform: scale(1.05);
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background: #333;
+    color: white;
+    padding: 20px;
+}
+
+.dashboard-sidebar nav ul {
+    list-style: none;
+}
+
+.dashboard-sidebar nav ul li {
+    margin: 10px 0;
+}
+
+.dashboard-sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.dashboard-main {
+    grid-area: main;
+    padding: 20px;
+    background: #f9f9f9;
 }
 
 .card {
@@ -169,14 +67,85 @@ body {
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
-.chart-container {
+/* Input Styles */
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #FF9800;
+}
+
+.input-group input {
     width: 100%;
-    margin: 20px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+.button {
+    background: linear-gradient(to right, #06bcee, #00dffc);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    width: 100%;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+#results {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#results.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.results-box {
+    background-color: #f0f4ff;
+    border-left: 6px solid #007BFF;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Green Box for Total Net Worth */
+.net-worth-box {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
-    .container {
-        width: 95%;
-        padding: 15px;
+    .dashboard-container {
+        grid-template-areas:
+            "header"
+            "main";
+        grid-template-rows: 60px 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-sidebar {
+        display: none;
+    }
+
+    .dashboard-main {
+        padding: 10px;
     }
 }

@@ -20,6 +20,11 @@ function calculateNetWorth() {
     const investmentValue = parseFloat(document.getElementById("investment-value").value);
     const years = parseInt(document.getElementById("years").value);
 
+    if (isNaN(house1Value) || isNaN(house2Value) || isNaN(house3Value) || isNaN(investmentValue) || isNaN(years)) {
+        alert("Please enter all values correctly.");
+        return;
+    }
+
     // Growth rates
     const houseGrowthRate = 0.04;
     const investmentGrowthRate = 0.07;
@@ -65,44 +70,4 @@ function calculateNetWorth() {
             <h3>House 2 (2005 Plum Grove)</h3>
             <p>Future Value: ${formatCurrency(house2FutureValue)}</p>
             <p>Remaining Debt: ${formatCurrency(house2FinalDebt)}</p>
-            <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house2NetValue)}</p>
-        </div>
-
-        <div class="results-box">
-            <h3>House 3 (5205 Wilmington)</h3>
-            <p>Future Value: ${formatCurrency(house3FutureValue)}</p>
-            <p>Remaining Debt: ${formatCurrency(house3FinalDebt)}</p>
-            <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house3NetValue)}</p>
-        </div>
-
-        <div class="results-box">
-            <h3>Investment Account</h3>
-            <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
-        </div>
-
-        <div class="results-box">
-            <h3>Total Future Net Worth</h3>
-            <p>${formatCurrency(futureNetWorth)}</p>
-        </div>
-    `;
-
-    // Display assumptions
-    const assumptionsDiv = document.getElementById("assumptions");
-    assumptionsDiv.innerHTML = `
-        <div class="assumptions">
-            <h3>Assumptions</h3>
-            <ul>
-                <li>The housing market is expected to grow at an annual rate of <strong>4%</strong>.</li>
-                <li>The stock market is expected to grow at an annual rate of <strong>7%</strong>.</li>
-                <li>You are contributing <strong>$100 per week</strong> to your investment account.</li>
-                <li>Principal payments for each house are fixed at the following monthly amounts:
-                    <ul>
-                        <li>2003 Plum Grove: <strong>$320</strong></li>
-                        <li>2005 Plum Grove: <strong>$360</strong></li>
-                        <li>5205 Wilmington: <strong>$140</strong></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    `;
-}
+            <p>Net Value

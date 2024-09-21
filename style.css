@@ -149,3 +149,47 @@ body {
         padding: 10px;
     }
 }
+
+/* Existing CSS for layout */
+.dashboard-main {
+    grid-area: main;
+    padding: 20px;
+    background: #f9f9f9;
+}
+
+.results-box {
+    background-color: #ffffff;
+    border-left: 6px solid #007BFF;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* New styles for smaller charts */
+.chart-container {
+    width: 50%; /* Smaller width for charts */
+    height: 300px; /* Fixed smaller height for charts */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.net-worth-box {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensuring the assumptions and net worth summary are always visible */
+.summary-section {
+    background-color: #f0f0f5;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+

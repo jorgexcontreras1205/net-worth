@@ -54,26 +54,36 @@ function calculateNetWorth() {
     // Displaying results with additional debt information
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `
-        <h3>Future Net Worth in ${years} Years</h3>
-        <p><strong>House 1 (2003 Plum Grove):</strong></p>
-        <p>Future Value: ${formatCurrency(house1FutureValue)}</p>
-        <p>Remaining Debt: ${formatCurrency(house1FinalDebt)}</p>
-        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house1NetValue)}</p>
+        <div class="results-box">
+            <h3>House 1 (2003 Plum Grove)</h3>
+            <p>Future Value: ${formatCurrency(house1FutureValue)}</p>
+            <p>Remaining Debt: ${formatCurrency(house1FinalDebt)}</p>
+            <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house1NetValue)}</p>
+        </div>
 
-        <p><strong>House 2 (2005 Plum Grove):</strong></p>
-        <p>Future Value: ${formatCurrency(house2FutureValue)}</p>
-        <p>Remaining Debt: ${formatCurrency(house2FinalDebt)}</p>
-        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house2NetValue)}</p>
+        <div class="results-box">
+            <h3>House 2 (2005 Plum Grove)</h3>
+            <p>Future Value: ${formatCurrency(house2FutureValue)}</p>
+            <p>Remaining Debt: ${formatCurrency(house2FinalDebt)}</p>
+            <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house2NetValue)}</p>
+        </div>
 
-        <p><strong>House 3 (5205 Wilmington):</strong></p>
-        <p>Future Value: ${formatCurrency(house3FutureValue)}</p>
-        <p>Remaining Debt: ${formatCurrency(house3FinalDebt)}</p>
-        <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house3NetValue)}</p>
+        <div class="results-box">
+            <h3>House 3 (5205 Wilmington)</h3>
+            <p>Future Value: ${formatCurrency(house3FutureValue)}</p>
+            <p>Remaining Debt: ${formatCurrency(house3FinalDebt)}</p>
+            <p>Net Value (Future Value - Remaining Debt): ${formatCurrency(house3NetValue)}</p>
+        </div>
 
-        <p><strong>Investment Account:</strong></p>
-        <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
+        <div class="results-box">
+            <h3>Investment Account</h3>
+            <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
+        </div>
 
-        <h3>Total Future Net Worth: ${formatCurrency(futureNetWorth)}</h3>
+        <div class="results-box">
+            <h3>Total Future Net Worth</h3>
+            <p>${formatCurrency(futureNetWorth)}</p>
+        </div>
 
         <h3>Assumptions:</h3>
         <ul>
@@ -89,4 +99,7 @@ function calculateNetWorth() {
             </li>
         </ul>
     `;
+
+    // Show the results div with transition effect
+    resultsDiv.classList.add('show');
 }

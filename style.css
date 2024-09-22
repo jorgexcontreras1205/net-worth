@@ -232,3 +232,81 @@ body, html {
 footer {
     margin-top: auto; /* Pushes itself to the bottom */
 }
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Important for full height */
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    background: linear-gradient(to right, #121212, #323232);
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Main layout */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allows container to expand to fill available space */
+    width: 100%;
+}
+
+.dashboard-header {
+    grid-area: header;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+}
+
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background: #333;
+    color: white;
+    padding: 20px;
+}
+
+.dashboard-main {
+    flex: 1; /* Fill remaining space */
+    padding: 20px;
+    background: #f9f9f9;
+    overflow-y: auto; /* Adds scroll to main area only */
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.footer {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+    border-top: 1px solid #0066cc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard-sidebar {
+        display: none; /* Hide sidebar on small screens */
+    }
+    .dashboard-header, .dashboard-footer {
+        text-align: center;
+        padding: 10px;
+    }
+}

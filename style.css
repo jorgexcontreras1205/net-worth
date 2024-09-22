@@ -172,3 +172,33 @@ body {
 .button:hover {
     background-color: #45a049;
 }
+
+.dashboard-footer {
+    background-color: #007BFF; /* Match the header or choose another complementary color */
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+    border-top: 1px solid #0066cc; /* Slightly darker blue than the background */
+}
+
+.dashboard-footer p {
+    margin: 5px 0; /* Small margin for spacing between lines */
+}
+
+/* Optional: style for links if you have them */
+.dashboard-footer a {
+    color: #ffff99; /* Light yellow for contrast */
+    text-decoration: none;
+}
+
+.dashboard-footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .dashboard-footer {
+        font-size: 12px; /* Smaller font size on smaller screens */
+        padding: 10px 5px; /* Less padding on smaller screens */
+    }
+}

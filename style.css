@@ -149,3 +149,26 @@ body {
         padding: 10px;
     }
 }
+
+.input-group input, .button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus, .button:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #e9e9e9;
+}
+
+.button {
+    background-color: #4CAF50; /* Primary color */
+    color: white;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #45a049;
+}

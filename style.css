@@ -202,3 +202,33 @@ body {
         padding: 10px 5px; /* Less padding on smaller screens */
     }
 }
+
+body, html {
+    height: 100%; /* Ensure the html and body elements take up the full height */
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Viewport height */
+}
+
+.main-content {
+    flex: 1; /* Takes up all available space pushing the footer down */
+}
+
+.dashboard-footer {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    border-top: 1px solid #0066cc;
+}
+
+/* Footer remains at the bottom */
+footer {
+    margin-top: auto; /* Pushes itself to the bottom */
+}

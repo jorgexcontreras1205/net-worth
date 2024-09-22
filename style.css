@@ -302,10 +302,7 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .dashboard-sidebar {
-        display: none; /* Hide sidebar on small screens */
-    }
-    .dashboard-header, .dashboard-footer {
+     .dashboard-footer {
         text-align: center;
         padding: 10px;
     }

@@ -46,14 +46,16 @@ function calculateNetWorth() {
 
     // Investment account future value with contributions
     const investmentFutureValue = investmentValue * Math.pow(1 + investmentGrowthRate, years) + 
-                                  weeklyInvestmentContribution * ((Math.pow(1 + investmentGrowthRate, years) - 1) / investmentGrowthRate);
+                                  (investmentGrowthRate !== 0 ? 
+                                   weeklyInvestmentContribution * ((Math.pow(1 + investmentGrowthRate, years) - 1) / investmentGrowthRate) : 
+                                   weeklyInvestmentContribution * years);
 
     // Total future net worth summation with proper rounding to avoid floating-point errors
     const futureNetWorth = house1NetValue + house2NetValue + house3NetValue + investmentFutureValue;
 
     // Displaying results with additional debt information
     const resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = 
+    resultsDiv.innerHTML = `
         <div class="results-box">
             <h3>Property 1 (2003 Plum Grove)</h3>
             <p>Future Value: ${formatCurrency(house1FutureValue)}</p>
@@ -79,7 +81,7 @@ function calculateNetWorth() {
         <div class="net-worth-box">
             Total Future Net Worth: ${formatCurrency(futureNetWorth)}
         </div>
-    ;
+    `;
 
     // Draw charts after updating the calculations
     drawCharts();
@@ -115,9 +117,9 @@ function drawCharts() {
         data: {
             labels: Array.from({length: parseInt(document.getElementById('years').value)}, (_, i) => i + 1),
             datasets: propertyValues.map((value, index) => ({
-                label: Property ${index + 1} Growth,
+                label: `Property ${index + 1} Growth`,
                 data: Array.from({length: parseInt(document.getElementById('years').value)}, (_, i) => (value * Math.pow(1 + parseFloat(document.getElementById('property-rate').value), i + 1)).toFixed(2)),
-                borderColor: rgba(${255 - index*85}, ${99 + index*85}, 132),
+                borderColor: `rgba(${255 - index*85}, ${99 + index*85}, 132)`,
                 fill: false
             }))
         },

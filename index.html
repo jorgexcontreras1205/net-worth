@@ -16,15 +16,6 @@
         <header class="dashboard-header">
             <h1>Net Worth Dashboard</h1>
         </header>
-        <aside class="dashboard-sidebar">
-            <nav>
-                <ul>
-                    <li><a href="#net-worth">Net Worth</a></li>
-                    <li><a href="#properties">Properties</a></li>
-                    <li><a href="#investments">Investments</a></li>
-                </ul>
-            </nav>
-        </aside>
         <main class="dashboard-main">
             <section id="net-worth" class="card">
                 <h2>Enter Your Asset Details</h2>
@@ -51,14 +42,12 @@
                     </div>
                     <div class="input-group">
                         <label for="investment-rate">Investment Growth Rate (%):</label>
-                        <input type="range" id="investment-rate" min="0" max="0.1" step="0.001" value="0.07" 
-                            oninput="document.getElementById('investment-rate-value').textContent = (parseFloat(this.value) * 100).toFixed(2) + '%'; calculateNetWorth(); drawCharts();">
+                        <input type="range" id="investment-rate" min="0" max="0.1" step="0.001" value="0.07" oninput="document.getElementById('investment-rate-value').textContent = (parseFloat(this.value) * 100).toFixed(2) + '%'; calculateNetWorth(); drawCharts();">
                         <span id="investment-rate-value">7%</span>
                     </div>
                     <div class="input-group">
                         <label for="property-rate">Property Growth Rate (%):</label>
-                        <input type="range" id="property-rate" min="0" max="0.1" step="0.001" value="0.04" 
-                            oninput="document.getElementById('property-rate-value').textContent = (parseFloat(this.value) * 100).toFixed(2) + '%'; calculateNetWorth(); drawCharts();">
+                        <input type="range" id="property-rate" min="0" max="0.1" step="0.001" value="0.04" oninput="document.getElementById('property-rate-value').textContent = (parseFloat(this.value) * 100).toFixed(2) + '%'; calculateNetWorth(); drawCharts();">
                         <span id="property-rate-value">4%</span>
                     </div>
                     <button class="button" type="button" onclick="calculateNetWorth()">Calculate Net Worth</button>
@@ -74,15 +63,11 @@
                 <canvas id="propertyChart"></canvas>
             </section>
         </main>
-        
         <footer class="dashboard-footer">
             <p>© 2024 Net Worth Calculator. All rights reserved.</p>
             <p>Privacy Policy | Terms of Service</p>
         </footer>
-        
     </div>
-    
     <script src="script.js"></script>
-    
 </body>
 </html>

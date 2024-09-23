@@ -5,7 +5,10 @@
     box-sizing: border-box;
 }
 
-body {
+body, html {
+    height: 100%; /* Ensure the html and body elements take up the full height */
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(to right, #121212, #323232);
     color: #ffffff;
@@ -15,46 +18,19 @@ body {
 
 /* Dashboard Layout */
 .dashboard-container {
-    display: grid;
-    grid-template-areas:
-        "header header"
-        "sidebar main";
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 250px 1fr;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Viewport height */
 }
 
 .dashboard-header {
-    grid-area: header;
     background-color: #007BFF;
     color: white;
     padding: 10px 20px;
-    display: flex;
-    align-items: center;
-}
-
-.dashboard-sidebar {
-    grid-area: sidebar;
-    background: #333;
-    color: white;
-    padding: 20px;
-}
-
-.dashboard-sidebar nav ul {
-    list-style: none;
-}
-
-.dashboard-sidebar nav ul li {
-    margin: 10px 0;
-}
-
-.dashboard-sidebar nav ul li a {
-    color: white;
-    text-decoration: none;
 }
 
 .dashboard-main {
-    grid-area: main;
+    flex: 1; /* Takes up all available space */
     padding: 20px;
     background: #f9f9f9;
 }
@@ -65,7 +41,7 @@ body {
     padding: 20px;
     margin-top: 20px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    color: #333; /* Ensuring text is visible against the light background */
+    color: #333;
 }
 
 /* Input Styles */
@@ -76,84 +52,11 @@ body {
     color: #FF9800; /* Maintaining visual emphasis on input labels */
 }
 
-.input-group input {
+.input-group input, .button {
     width: 100%;
     padding: 12px;
     border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-}
-
-.button {
-    background: linear-gradient(to right, #06bcee, #00dffc);
-    color: #fff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    width: 100%;
-}
-
-.button:hover {
-    transform: scale(1.05);
-}
-
-#results {
-    background-color: #e0e0e0; /* Light grey background for clarity */
-    color: #333; /* Dark text for readability */
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    opacity: 1; /* Making sure it's always visible */
-}
-
-.results-box {
-    background-color: #ffffff; /* White background for maximum contrast */
-    border-left: 6px solid #007BFF;
-    border-radius: 10px;
-    padding: 20px;
-    color: #333; /* Ensuring readability */
-}
-
-/* Green Box for Total Future Net Worth */
-.net-worth-box {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 24px;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-    .dashboard-container {
-        grid-template-areas:
-            "header"
-            "main";
-        grid-template-rows: 60px 1fr;
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-sidebar {
-        display: none;
-    }
-
-    .dashboard-main {
-        padding: 10px;
-    }
-}
-
-.input-group input, .button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #f4f4f4;
     transition: all 0.3s ease;
 }
@@ -180,55 +83,13 @@ body {
     padding: 20px 10px;
     font-size: 14px;
     border-top: 1px solid #0066cc; /* Slightly darker blue than the background */
+    margin-top: auto; /* Pushes itself to the bottom */
 }
 
-.dashboard-footer p {
-    margin: 5px 0; /* Small margin for spacing between lines */
-}
-
-/* Optional: style for links if you have them */
-.dashboard-footer a {
-    color: #ffff99; /* Light yellow for contrast */
-    text-decoration: none;
-}
-
-.dashboard-footer a:hover {
-    text-decoration: underline;
-}
-
+/* Responsive Media Queries */
 @media (max-width: 768px) {
     .dashboard-footer {
         font-size: 12px; /* Smaller font size on smaller screens */
         padding: 10px 5px; /* Less padding on smaller screens */
     }
-}
-
-body, html {
-    height: 100%; /* Ensure the html and body elements take up the full height */
-    margin: 0;
-    padding: 0;
-}
-
-.dashboard-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Viewport height */
-}
-
-.main-content {
-    flex: 1; /* Takes up all available space pushing the footer down */
-}
-
-.dashboard-footer {
-    background-color: #007BFF;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    border-top: 1px solid #0066cc;
-}
-
-/* Footer remains at the bottom */
-footer {
-    margin-top: auto; /* Pushes itself to the bottom */
 }

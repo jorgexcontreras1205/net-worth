@@ -18,8 +18,8 @@ function calculateNetWorth() {
     const house2Value = parseFloat(document.getElementById("house2-value").value);
     const house3Value = parseFloat(document.getElementById("house3-value").value);
     const investmentValue = parseFloat(document.getElementById("investment-value").value);
+    const personalLoans = parseFloat(document.getElementById("personal-loans").value) || 0;  // Handle if no input
     const years = parseInt(document.getElementById("years").value);
-    const personalLoan = parseFloat(document.getElementById("personal-loan").value); // New input for personal loans
 
     // Growth rates
     const houseGrowthRate = parseFloat(document.getElementById("property-rate").value);
@@ -49,8 +49,8 @@ function calculateNetWorth() {
     const investmentFutureValue = investmentValue * Math.pow(1 + investmentGrowthRate, years) + 
                                   weeklyInvestmentContribution * ((Math.pow(1 + investmentGrowthRate, years) - 1) / investmentGrowthRate);
 
-    // Total future net worth summation with proper rounding to avoid floating-point errors
-    const futureNetWorth = house1NetValue + house2NetValue + house3NetValue + investmentFutureValue - personalLoan;
+    // Subtract personal loans from total future net worth
+    const futureNetWorth = house1NetValue + house2NetValue + house3NetValue + investmentFutureValue - personalLoans;
 
     // Displaying results with additional debt information
     const resultsDiv = document.getElementById("results");
@@ -78,7 +78,7 @@ function calculateNetWorth() {
             <p>Future Value: ${formatCurrency(investmentFutureValue)}</p>
         </div>
         <div class="net-worth-box">
-            Total Future Net Worth (minus personal loan): ${formatCurrency(futureNetWorth)}
+            Total Future Net Worth: ${formatCurrency(futureNetWorth)}
         </div>
     `;
 

@@ -53,6 +53,9 @@ function calculateNetWorth() {
     // Total future net worth summation with proper rounding to avoid floating-point errors
     const futureNetWorth = house1NetValue + house2NetValue + house3NetValue + investmentFutureValue;
 
+    // Log the calculation for debugging
+    console.log("Future Net Worth: ", futureNetWorth);
+
     // Displaying results with additional debt information
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `

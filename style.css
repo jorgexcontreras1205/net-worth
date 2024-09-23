@@ -65,7 +65,7 @@ body {
     padding: 20px;
     margin-top: 20px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    color: #333; /* Ensuring text is visible against the light background */
+    color: #333;
 }
 
 /* Input Styles */
@@ -73,7 +73,7 @@ body {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #FF9800; /* Maintaining visual emphasis on input labels */
+    color: #FF9800;
 }
 
 .input-group input {
@@ -102,21 +102,21 @@ body {
 }
 
 #results {
-    background-color: #e0e0e0; /* Light grey background for clarity */
-    color: #333; /* Dark text for readability */
+    background-color: #e0e0e0;
+    color: #333;
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px;
     transition: opacity 0.6s ease, transform 0.6s ease;
-    opacity: 1; /* Making sure it's always visible */
+    opacity: 1;
 }
 
 .results-box {
-    background-color: #ffffff; /* White background for maximum contrast */
+    background-color: #ffffff;
     border-left: 6px solid #007BFF;
     border-radius: 10px;
     padding: 20px;
-    color: #333; /* Ensuring readability */
+    color: #333;
 }
 
 /* Green Box for Total Future Net Worth */
@@ -164,7 +164,7 @@ body {
 }
 
 .button {
-    background-color: #4CAF50; /* Primary color */
+    background-color: #4CAF50;
     color: white;
     font-weight: bold;
 }
@@ -174,21 +174,20 @@ body {
 }
 
 .dashboard-footer {
-    background-color: #007BFF; /* Match the header or choose another complementary color */
+    background-color: #007BFF;
     color: white;
     text-align: center;
     padding: 20px 10px;
     font-size: 14px;
-    border-top: 1px solid #0066cc; /* Slightly darker blue than the background */
+    border-top: 1px solid #0066cc;
 }
 
 .dashboard-footer p {
-    margin: 5px 0; /* Small margin for spacing between lines */
+    margin: 5px 0;
 }
 
-/* Optional: style for links if you have them */
 .dashboard-footer a {
-    color: #ffff99; /* Light yellow for contrast */
+    color: #ffff99;
     text-decoration: none;
 }
 
@@ -198,13 +197,13 @@ body {
 
 @media (max-width: 768px) {
     .dashboard-footer {
-        font-size: 12px; /* Smaller font size on smaller screens */
-        padding: 10px 5px; /* Less padding on smaller screens */
+        font-size: 12px;
+        padding: 10px 5px;
     }
 }
 
 body, html {
-    height: 100%; /* Ensure the html and body elements take up the full height */
+    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -212,11 +211,11 @@ body, html {
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Viewport height */
+    min-height: 100vh;
 }
 
 .main-content {
-    flex: 1; /* Takes up all available space pushing the footer down */
+    flex: 1;
 }
 
 .dashboard-footer {
@@ -230,5 +229,5 @@ body, html {
 
 /* Footer remains at the bottom */
 footer {
-    margin-top: auto; /* Pushes itself to the bottom */
+    margin-top: auto;
 }

@@ -1,11 +1,11 @@
 // Fixed house debts and specific monthly principal reductions
-const house1Debt = 135000;  // 2003 Plum Grove
-const house2Debt = 161000;  // 2005 Plum Grove
-const house3Debt = 163500;  // 5205 Wilmington
+const house1Debt = 132000;  // 2003 Plum Grove
+const house2Debt = 157000;  // 2005 Plum Grove
+const house3Debt = 160000;  // 5205 Wilmington
 const house1PrincipalReduction = 320;  // Monthly payment towards principal for 2003 Plum Grove
 const house2PrincipalReduction = 326;  // Monthly payment towards principal for 2005 Plum Grove
 const house3PrincipalReduction = 250;  // Monthly payment towards principal for 5205 Wilmington
-const weeklyInvestmentContribution = 100 * 52;  // $100 per week, converted to annual contributions
+const weeklyInvestmentContribution = 400 * 52;  // $400 per week, converted to annual contributions
 
 // Function to format numbers as currency (e.g., $1,000.00)
 function formatCurrency(value) {
